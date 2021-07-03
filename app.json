@@ -1,0 +1,58 @@
+{
+  "name": "FeedBack Bot",
+  "description": "Telegram's Best feedBack Bot",
+  "keywords": [
+    "telegram",
+    "best",
+    "feedback",
+    "bot"
+  ],
+  "success_url": "https://telegram.dog//",
+  "website": "https://github.com/HeimanPictures/HeimanPictures/",
+  "repository": "https://github.com/HeimanPictures/Feedback-bot/",
+  "env": {
+    "START_TEXT": {
+      "description": "Your , as a string.",
+      "value": ""
+    },
+    "HELP_TEXT": {
+      "description": "Your , as a string.",
+      "value": ""
+    },
+    "OWNER_ID": {
+      "description": "Your , as a string.",
+      "value": ""
+    },
+    "DONATE_TEXT": {
+      "description": "Your , as a string.",
+      "value": ""
+    },
+    "DONATE_LINK": {
+      "description": "Your Donation Link",
+      "value": "https://paypal.me/"
+    },
+    "BOT_TOKEN": {
+      "description": "Your Bot Token, as a string.",
+      "value": ""
+    },
+    "API_ID": {
+      "description": "Get this value from https://my.telegram.org",
+      "value": ""
+    },
+    "API_HASH": {
+      "description": "Get this value from https://my.telegram.org",
+      "value": ""
+    }
+  },
+  "addons": [
+  ],
+  "buildpacks": [{
+    "url": "heroku/python"
+  }],
+  "formation": {
+    "worker": {
+      "quantity": 1,
+      "size": "free"
+    }
+  }
+}
