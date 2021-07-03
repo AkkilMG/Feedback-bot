@@ -12,19 +12,19 @@
   "repository": "https://github.com/HeimanPictures/Feedback-bot/",
   "env": {
     "START_TEXT": {
-      "description": "Your , as a string.",
+      "description": "Your Start message as a string & There Is default Of 'Hello <username>'.",
       "value": ""
     },
     "HELP_TEXT": {
-      "description": "Your , as a string.",
+      "description": "Your Help Text as a string.",
       "value": ""
     },
     "OWNER_ID": {
-      "description": "Your , as a string.",
+      "description": "Your ID Or Who need is going to handle this bot",
       "value": ""
     },
     "DONATE_TEXT": {
-      "description": "Your , as a string.",
+      "description": "Your Donate Text as a string.",
       "value": ""
     },
     "DONATE_LINK": {
