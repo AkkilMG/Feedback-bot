@@ -29,7 +29,15 @@
     },
     "DONATE_LINK": {
       "description": "Your Donation Link",
-      "value": "https://paypal.me/"
+      "value": "https://paypal.me/HeimanPictures/"
+    },
+    "SUPPORT_GROUP": {
+      "description": "Your Group Link",
+      "value": "https://t.me/HeimanSupport/"
+    },
+    "UPDATE_CHANNEL": {
+      "description": "Your Channel Link",
+      "value": "https://t.me/HeimanSupports/"
     },
     "BOT_TOKEN": {
       "description": "Your Bot Token, as a string.",
