@@ -57,7 +57,7 @@ async def start(bot, message):
         parse_mode="html"
     )
     await message.reply_text(
-        text="**Hi {}!**".format(message.chat.first_name)+C.START,
+        text="**Hi {}!**\n".format(message.chat.first_name)+C.START,
         reply_markup=InlineKeyboardMarkup([
             [ InlineKeyboardButton(text="🛠SUPPORT🛠", url=f"https://t.me/HeimanSupport/"), InlineKeyboardButton(text="📮UPDATES📮", url=f"https://t.me/HeimanSupports/")]
         ])
