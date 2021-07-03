@@ -28,6 +28,12 @@ cp configs.py
 python bot.py
 ```
 
+## To-Do
+
+- Database
+- Broadcast & No. Of Users
+- Ban & Unban
+
 ## Note
      Kangers Keep Some Distance.. 
      If You Have Cloned It Up Before 
