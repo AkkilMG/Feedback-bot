@@ -41,4 +41,3 @@ python bot.py
 ## Credits
 
 - Thanks To <b>[Heiman Creation](https://telegram.dog/HeimanCreation/)</b> 
-- Thanks To <b>[Lokaman](https://github.com/lntechnical/)</b> for Some Ideas..😇
