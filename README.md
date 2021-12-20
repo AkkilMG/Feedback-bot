@@ -5,7 +5,6 @@
 
   This Bot Works Like Independent @LivegramBot, But With Extra Command And Even Logs Of The User Who Have Used Start Command Of The Bot... 
 
-  I Have Not Yet Added Any Database And Ban And UnBan Feature In This Repo. If You Need That Commands And Features Just Request Us [@HeimanSupport](https://telegram.dog/HeimanSupport/). We Will Try To Add It Soon..</b>
 ## Installation
 
 ### Direct
@@ -30,10 +29,8 @@ python bot.py
 
 ## To-Do
 
-- Database
-- Broadcast & No. Of Users
-- Ban & Unban
-
+- None
+  
 ## Note
      Kangers Keep Some Distance.. 
      If You Have Cloned It Up Before 
