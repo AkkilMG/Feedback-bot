@@ -68,7 +68,7 @@
       "value": "True"
     },
     "AUTH_USERS": {
-      "description": "Provide AUTH User ID",
+      "description": "Provide AUTH User ID to use admin function",
       "value": "1428968542"
     }
   },
