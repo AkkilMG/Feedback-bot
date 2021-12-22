@@ -7,7 +7,7 @@
     "feedback",
     "bot"
   ],
-  "success_url": "https://telegram.dog//",
+  "success_url": "/",
   "website": "https://github.com/HeimanPictures/HeimanPictures/",
   "repository": "https://github.com/HeimanPictures/Feedback-bot/",
   "env": {
@@ -50,6 +50,26 @@
     "API_HASH": {
       "description": "Get this value from https://my.telegram.org",
       "value": ""
+    },
+    "DB_URL": {
+      "description": "Provided Mongodb Database link from mongodb.com",
+      "value": ""
+    },
+    "DB_NAME": {
+      "description": "Provide name for DB to make session",
+      "value": "Invite-All-Bot"
+    },
+    "LOG_CHANNEL": {
+      "description": "Make a channel add the bot as admin and get the id of the channel using @googleimgbot",
+      "value": ""
+    },
+    "BROADCAST_AS_COPY": {
+      "description": "If you provide value False then it will Forward with tag and if you give value as True then without tag",
+      "value": "True"
+    },
+    "AUTH_USERS": {
+      "description": "Provide AUTH User ID",
+      "value": "1428968542"
     }
   },
   "addons": [
