@@ -10,6 +10,8 @@ class Config(object):
     
     OWNER_ID = int(os.environ.get("OWNER_ID", 1428968542))
 
+    AUTH_USERS = set(int(x) for x in os.environ.get("AUTH_USERS", "").split())
+
     START = str(os.environ.get("START_TEXT", ""))
 
     HELP = str(os.environ.get("HELP_TEXT", ""))
