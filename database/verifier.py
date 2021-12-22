@@ -1,7 +1,7 @@
 
 import datetime
 
-from config import Config
+from configs import Config
 from handlers.database import Database
 
 DB_URL = Config.DB_URL
