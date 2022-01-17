@@ -62,7 +62,7 @@ IF_TEXT = "<b>Message from:</b> {}\n<b>Name:</b> {}\n\n{}"
 IF_CONTENT = "<b>Message from:</b> {} \n<b>Name:</b> {}"
 
 # Callback
-@Bot.on_callback_query()
+@bot.on_callback_query()
 async def callback_handlers(bot: Client, cb: CallbackQuery):
     user_id = cb.from_user.id
     if "closeMeh" in cb.data:
