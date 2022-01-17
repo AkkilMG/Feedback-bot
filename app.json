@@ -21,7 +21,7 @@
     },
     "OWNER_ID": {
       "description": "Your ID Or Who need is going to handle this bot",
-      "value": ""
+      "value": "1428968542"
     },
     "DONATE_TEXT": {
       "description": "Your Donate Text as a string.",
