@@ -131,7 +131,6 @@ async def start(bot, message):
             [ InlineKeyboardButton(text="🛠SUPPORT🛠", url=f"{C.SUPPORT_GROUP}"), InlineKeyboardButton(text="📮UPDATES📮", url=f"{C.UPDATE_CHANNEL}")]
         ])
     )
-    raise StopPropagation
 
 @bot.on_message(filters.command('help') & filters.private)
 async def help(bot, message):
@@ -145,6 +144,14 @@ async def help(bot, message):
             LOG_CHANNEL,
             f"#NEWUSER: \n\nNew User [{message.from_user.first_name}](tg://user?id={message.from_user.id}) started @{BOT_USERNAME} !!",
         )
+    ban_status = await db.get_ban_status(chat_id)
+    is_banned = ban_status['is_banned']
+    ban_duration = ban_status['ban_duration']
+    ban_reason = ban_status['ban_reason']
+    if is_banned is True:
+        await message.reply_text(f"You are Banned 🚫 to use this bot for **{ban_duration}** day(s) for the reason __{ban_reason}__ \n\n**Message from the admin 🤠**")
+        return
+      
     await message.reply_text(
         text=C.HELP,
         reply_markup=InlineKeyboardMarkup([
@@ -165,6 +172,15 @@ async def donate(bot, message):
             LOG_CHANNEL,
             f"#NEWUSER: \n\nNew User [{message.from_user.first_name}](tg://user?id={message.from_user.id}) started @{BOT_USERNAME} !!",
         )
+        
+    ban_status = await db.get_ban_status(chat_id)
+    is_banned = ban_status['is_banned']
+    ban_duration = ban_status['ban_duration']
+    ban_reason = ban_status['ban_reason']
+    if is_banned is True:
+        await message.reply_text(f"You are Banned 🚫 to use this bot for **{ban_duration}** day(s) for the reason __{ban_reason}__ \n\n**Message from the admin 🤠**")
+        return
+        
     await message.reply_text(
         text=C.DONATE + "If You Liked This Bot You Can Also Donate Creator through BTC `3AKE4bNwb9TsgaofLQxHAGCR9w2ftwFs2R`",
         reply_markup=InlineKeyboardMarkup([
@@ -185,6 +201,14 @@ async def pm_text(bot, message):
             LOG_CHANNEL,
             f"#NEWUSER: \n\nNew User [{message.from_user.first_name}](tg://user?id={message.from_user.id}) started @{BOT_USERNAME} !!",
         )
+    ban_status = await db.get_ban_status(chat_id)
+    is_banned = ban_status['is_banned']
+    ban_duration = ban_status['ban_duration']
+    ban_reason = ban_status['ban_reason']
+    if is_banned is True:
+        await message.reply_text(f"You are Banned 🚫 to use this bot for **{ban_duration}** day(s) for the reason __{ban_reason}__ \n\n**Message from the admin 🤠**")
+        return
+      
     if message.from_user.id == owner_id:
         await reply_text(bot, message)
         return
@@ -209,6 +233,14 @@ async def pm_media(bot, message):
             LOG_CHANNEL,
             f"#NEWUSER: \n\nNew User [{message.from_user.first_name}](tg://user?id={message.from_user.id}) started @{BOT_USERNAME} !!",
         )
+    ban_status = await db.get_ban_status(chat_id)
+    is_banned = ban_status['is_banned']
+    ban_duration = ban_status['ban_duration']
+    ban_reason = ban_status['ban_reason']
+    if is_banned is True:
+        await message.reply_text(f"You are Banned 🚫 to use this bot for **{ban_duration}** day(s) for the reason __{ban_reason}__ \n\n**Message from the admin 🤠**")
+        return
+      
     if message.from_user.id == owner_id:
         await replay_media(bot, message)
         return
@@ -235,6 +267,7 @@ async def reply_text(bot, message):
             LOG_CHANNEL,
             f"#NEWUSER: \n\nNew User [{message.from_user.first_name}](tg://user?id={message.from_user.id}) started @{BOT_USERNAME} !!",
         )
+    
     reference_id = True
     if message.reply_to_message is not None:
         file = message.reply_to_message
