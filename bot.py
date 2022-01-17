@@ -316,7 +316,7 @@ async def replay_media(bot, message):
         )
 
 
-@bot.on_message(filters.command("settings") & filters.private))
+@bot.on_message(filters.command("settings") & filters.private)
 async def opensettings(bot, cmd):
     user_id = cmd.from_user.id
     # Adding to DB
