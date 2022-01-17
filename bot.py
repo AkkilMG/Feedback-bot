@@ -32,7 +32,9 @@ logger = logging.getLogger(__name__)
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
 # Import From Framework
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+# from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
+
+from pyrogram.types import *
 
 from database.broadcast import broadcast
 from database.verifier import handle_user_status
