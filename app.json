@@ -57,7 +57,7 @@
     },
     "DB_NAME": {
       "description": "Provide name for DB to make session",
-      "value": "Invite-All-Bot"
+      "value": "Feedback-Bot"
     },
     "LOG_CHANNEL": {
       "description": "Make a channel add the bot as admin and get the id of the channel using @googleimgbot",
