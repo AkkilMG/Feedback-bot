@@ -2,7 +2,7 @@
 import datetime
 
 from configs import Config
-from handlers.database import Database
+from database.database import Database
 
 DB_URL = Config.DB_URL
 DB_NAME = Config.DB_NAME
