@@ -30,4 +30,5 @@ class Config(object):
     
     LOG_CHANNEL = int(os.environ.get("LOG_CHANNE", ""))
 
-    BROADCAST_AS_COPY = bool(os.environ.get("BROADCAST_AS_COPY", True)
+    BROADCAST_AS_COPY = bool(os.environ.get("BROADCAST_AS_COPY", True))
+
