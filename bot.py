@@ -285,7 +285,7 @@ async def reply_text(bot, message):
         await bot.send_message(
             chat_id=int(reference_id),
             #from_chat_id=message.chat.id,
-            message_id=message.message_id,
+            #message_id=message.message_id,
             text=message.text
         )
 
