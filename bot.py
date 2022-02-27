@@ -321,7 +321,7 @@ async def replay_media(bot, message):
         )
 
 
-@bot.on_message(filters.user(owner_id) & filters.command("settings") & filters.private)
+@bot.on_message(filters.command("settings") & filters.private)
 async def opensettings(bot, cmd):
     user_id = cmd.from_user.id
     # Adding to DB
@@ -333,20 +333,15 @@ async def opensettings(bot, cmd):
             LOG_CHANNEL,
             f"#NEWUSER: \n\nNew User [{message.from_user.first_name}](tg://user?id={message.from_user.id}) started @{BOT_USERNAME} !!",
         )
-    await cmd.reply_text(
-        f"⚙ `Here You Can Set Your Settings:` ⚙\n\nSuccessfully setted notifications to **{await db.get_notif(user_id)}**",
-        reply_markup=InlineKeyboardMarkup(
-            [
+    try:
+        await cmd.reply_text(
+            text=f"⚙ `Here You Can Set Your Settings:` ⚙\n\nSuccessfully setted notifications to **{await db.get_notif(user_id)}**",
+            reply_markup=InlineKeyboardMarkup(
                 [
-                    InlineKeyboardButton(
-                        f"NOTIFICATION  {'🔔' if ((await db.get_notif(user_id)) is True) else '🔕'}",
-                        callback_data="notifon",
-                    )
-                ],
-                [InlineKeyboardButton("❎", callback_data="closeMeh")],
-            ]
-        ),
-    )
+                    [InlineKeyboardButton(text=f"NOTIFICATION  {'🔔' if ((await db.get_notif(user_id)) is True) else '🔕'}",callback_data="notifon")],
+                    [InlineKeyboardButton(text="❎", callback_data="closeMeh")],
+                ]
+            ))
 
 
 @bot.on_message(filters.private & filters.command("broadcast"))
