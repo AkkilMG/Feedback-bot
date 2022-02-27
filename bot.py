@@ -213,7 +213,6 @@ async def pm_text(bot, message):
         return
       
     if message.from_user.id == owner_id:
-        await reply_text(bot, message)
         return
     info = await bot.get_users(user_ids=message.from_user.id)
     reference_id = int(message.chat.id)
@@ -283,8 +282,10 @@ async def reply_text(bot, message):
         except Exception:
             pass
         await bot.send_message(
-            text=message.text,
-            chat_id=int(reference_id)
+            chat_id=int(reference_id),
+            from_chat_id=message.chat.id,
+            message_id=message.message_id,
+            text=message.text
         )
 
 
@@ -319,7 +320,7 @@ async def replay_media(bot, message):
         )
 
 
-@bot.on_message(filters.command("settings") & filters.private)
+@bot.on_message(filters.user(owner_id) & filters.command("settings") & filters.private)
 async def opensettings(bot, cmd):
     user_id = cmd.from_user.id
     # Adding to DB
