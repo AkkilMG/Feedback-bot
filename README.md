@@ -109,7 +109,6 @@ python bot.py
 start - To Start
 help - To get help
 donate - To get donate
-about - To Know About me
 settings - To get settings
 stats - To get stats
 ban_user - To ban user
