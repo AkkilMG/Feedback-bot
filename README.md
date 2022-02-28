@@ -1,7 +1,7 @@
 # Feedback-Bot  
 
   <b>Hey, This Is [Feedback Bot](/) Made By Using Python And Pyrogram Framework
- This is enovation of [HeimanCreation](https://github.com/HeimanPictures/HeimanPictures/) 😇.
+ This is enovation of [AkKiL](https://github.com/HeimanPictures/HeimanPictures/) 😇.
 
   This Bot Works Like Independent @LivegramBot, But With Extra Command And Even Logs Of The User Who Have Used Start Command Of The Bot... 
 
@@ -11,7 +11,7 @@
 
 #### You can also tap the Deploy To Heroku button below to deploy straight to Heroku!
 
-<p align="center"><a href="https://heroku.com/deploy?template=https://github.com/HeimanPictures/Feedback-bot/tree/New-Patch"> <img src="https://img.shields.io/badge/Deploy%20To%20Heroku-blueviolet?style=for-the-badge&logo=heroku" width="210" height="34.45" alt="Deploy To Heroku"/></a></p>
+<p align="center"><a href="https://heroku.com/deploy?template=https://github.com/HeimanPictures/Feedback-bot/"> <img src="https://img.shields.io/badge/Deploy%20To%20Heroku-blueviolet?style=for-the-badge&logo=heroku" width="210" height="34.45" alt="Deploy To Heroku"/></a></p>
 
 #### You can also tap the Deploy To Railway button below to deploy straight to Railway!
   
@@ -23,7 +23,7 @@
 
 #### Terminal Or Some VPS Use This Way Of Deploy.. 😇
 ```
-git clone https://github.com/HeimanPictures/Feedback-bot/tree/Heroku
+git clone https://github.com/HeimanPictures/Feedback-bot/
 cd Feedback-bot
 virtualenv -p python3 VENV
 . ./VENV/bin/activate
@@ -130,4 +130,4 @@ broadcast - To Broadcast [Admin]
 
 ## Credits
 
-- Thanks To <b>[Heiman Creation](https://telegram.dog/HeimanCreation/)</b> 
+- Thanks To <b>[AkKiL](https://telegram.dog/HeimanCreation/)</b> 
