@@ -96,11 +96,11 @@ async def callback_handlers(bot: Client, cb: CallbackQuery):
         )
         
         
-@bot.on_message(filters.private)
+@bot.on_message((filters.private | filters.group))
 async def _(bot, cmd):
     await handle_user_status(bot, cmd)
 
-@bot.on_message(filters.command('start') & filters.private)
+@bot.on_message(filters.command('start') & (filters.private | filters.group))
 async def start(bot, message):
     chat_id = message.from_user.id
     # Adding to DB
@@ -135,7 +135,7 @@ async def start(bot, message):
         ])
     )
 
-@bot.on_message(filters.command('help') & filters.private)
+@bot.on_message(filters.command('help') & (filters.group | filters.private))
 async def help(bot, message):
     chat_id = message.from_user.id
     # Adding to DB
@@ -163,7 +163,7 @@ async def help(bot, message):
     )
 
 
-@bot.on_message(filters.command('donate') & filters.private)
+@bot.on_message(filters.command('donate') & (filters.group | filters.private))
 async def donate(bot, message):
     chat_id = message.from_user.id
     # Adding to DB
@@ -230,7 +230,7 @@ async def broadcast_handler_open(_, m):
     await broadcast(m, db)
 
 
-@bot.on_message(filters.private & filters.command("stats"))
+@bot.on_message((filters.group | filters.private) & filters.command("stats"))
 async def sts(c, m):
     if m.from_user.id not in AUTH_USERS:
         await m.delete()
@@ -285,7 +285,7 @@ async def ban(c, m):
         )
 
 
-@bot.on_message(filters.private & filters.command("unban_user"))
+@bot.on_message((filters.group | filters.private) & filters.command("unban_user"))
 async def unban(c, m):
     if m.from_user.id not in AUTH_USERS:
         await m.delete()
@@ -320,7 +320,7 @@ async def unban(c, m):
         )
 
 
-@bot.on_message(filters.private & filters.command("banned_users"))
+@bot.on_message((filters.group | filters.private) & filters.command("banned_users"))
 async def _banned_usrs(c, m):
     if m.from_user.id not in AUTH_USERS:
         await m.delete()
@@ -347,7 +347,7 @@ async def _banned_usrs(c, m):
     return
 
 
-@bot.on_message(filters.private & filters.text)
+@bot.on_message((filters.group | filters.private) & filters.text)
 async def pm_text(bot, message):
     chat_id = message.from_user.id
     # Adding to DB
@@ -379,7 +379,7 @@ async def pm_text(bot, message):
     )
 
 
-@bot.on_message(filters.private & filters.media)
+@bot.on_message((filters.group | filters.private) & filters.media)
 async def pm_media(bot, message):
     chat_id = message.from_user.id
     # Adding to DB
