@@ -87,7 +87,7 @@ async def callback_handlers(bot: Client, cb: CallbackQuery):
                             callback_data="notifon",
                         )
                     ],
-                    [InlineKeyboardButton("❎", callback_data="closeMeh")],
+                    [InlineKeyboardButton("CLOSE", callback_data="closeMeh")],
                 ]
             ),
         )
@@ -211,7 +211,7 @@ async def opensettings(bot, cmd):
             reply_markup=InlineKeyboardMarkup(
                 [
                     [InlineKeyboardButton(text=f"NOTIFICATION  {'🔔' if ((await db.get_notif(user_id)) is True) else '🔕'}",callback_data="notifon")],
-                    [InlineKeyboardButton(text="❎", callback_data="closeMeh")],
+                    [InlineKeyboardButton(text="CLOSE", callback_data="closeMeh")],
                 ]
             )
         )
