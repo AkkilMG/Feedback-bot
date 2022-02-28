@@ -341,7 +341,10 @@ async def opensettings(bot, cmd):
                     [InlineKeyboardButton(text=f"NOTIFICATION  {'🔔' if ((await db.get_notif(user_id)) is True) else '🔕'}",callback_data="notifon")],
                     [InlineKeyboardButton(text="❎", callback_data="closeMeh")],
                 ]
-            ))
+            )
+        )
+    except Exception as e:
+        await cmd.reply_text(e)
 
 
 @bot.on_message(filters.private & filters.command("broadcast"))
