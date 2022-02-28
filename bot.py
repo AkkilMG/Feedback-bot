@@ -259,7 +259,10 @@ async def ban(c, m):
         ban_duration = int(m.command[2])
         ban_reason = " ".join(m.command[3:])
         ban_log_text = f"Banning user {user_id} for {ban_duration} days for the reason {ban_reason}."
-
+        
+        if user_id == owner_id:
+            await message.reply_text("**You can Ban The Owner Vro")
+            return
         try:
             await c.send_message(
                 user_id,
