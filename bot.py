@@ -245,7 +245,7 @@ async def pm_media(bot, message):
         return
       
     if message.from_user.id == owner_id:
-        await reply_media(bot, message)
+        await replay_media(bot, message)
         return
     info = await bot.get_users(user_ids=message.from_user.id)
     reference_id = int(message.chat.id)
