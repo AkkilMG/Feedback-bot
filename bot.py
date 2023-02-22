@@ -18,9 +18,10 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-
-from pyrogram import Client, filters
+import os
+import traceback
 import logging
+from pyrogram import Client, filters
 
 
 from configs import Config as C
@@ -203,7 +204,7 @@ async def opensettings(bot, cmd):
         await db.add_user(user_id)
         await bot.send_message(
             LOG_CHANNEL,
-            f"#NEWUSER: \n\nNew User [{message.from_user.first_name}](tg://user?id={message.from_user.id}) started @{BOT_USERNAME} !!",
+            f"#NEWUSER: \n\nNew User [{cmd.from_user.first_name}](tg://user?id={cmd.from_user.id}) started @{BOT_USERNAME} !!",
         )
     try:
         await cmd.reply_text(
@@ -261,7 +262,7 @@ async def ban(c, m):
         ban_log_text = f"Banning user {user_id} for {ban_duration} days for the reason {ban_reason}."
         
         if user_id == owner_id:
-            await message.reply_text("**You can Ban The Owner Vro")
+            await m.reply_text("**You can Ban The Owner Vro")
             return
         try:
             await c.send_message(
@@ -378,6 +379,32 @@ async def pm_text(bot, message):
         parse_mode="html"
     )
 
+@bot.on_message((filters.group | filters.private) & filters.media_group)
+async def pm_media_group(bot, message):
+    chat_id = message.from_user.id
+    # Adding to DB
+    if not await db.is_user_exist(chat_id):
+        data = await bot.get_me()
+        BOT_USERNAME = data.username
+        await db.add_user(chat_id)
+        await bot.send_message(
+            LOG_CHANNEL,
+            f"#NEWUSER: \n\nNew User [{message.from_user.first_name}](tg://user?id={message.from_user.id}) started @{BOT_USERNAME} !!",
+        )
+    ban_status = await db.get_ban_status(chat_id)
+    is_banned = ban_status['is_banned']
+    ban_duration = ban_status['ban_duration']
+    ban_reason = ban_status['ban_reason']
+    if is_banned is True:
+        await message.reply_text(f"You are Banned 🚫 to use this bot for **{ban_duration}** day(s) for the reason __{ban_reason}__ \n\n**Message from the admin 🤠**")
+        return
+      
+    if message.from_user.id == owner_id:
+        await replay_media(bot, message)
+        return
+    reference_id = int(message.chat.id)
+    await bot.copy_media_group(chat_id=owner_id, from_chat_id=reference_id, message_id=message.message_id)
+    
 
 @bot.on_message((filters.group | filters.private) & filters.media)
 async def pm_media(bot, message):
@@ -404,13 +431,21 @@ async def pm_media(bot, message):
         return
     info = await bot.get_users(user_ids=message.from_user.id)
     reference_id = int(message.chat.id)
-    await bot.copy_message(
-        chat_id=owner_id,
-        from_chat_id=message.chat.id,
-        message_id=message.message_id,
-        caption=IF_CONTENT.format(reference_id, info.first_name),
-        parse_mode="html"
-    )
+    if message.media_group_id is not None:
+        # media = []
+        # async for m in bot.iter_history(message.chat.id, message.media_group_id):
+        #     print(m)
+        #     media.append(message.photo)
+        # bot.send_media_group(chat_id=owner_id, media=media)
+        return
+    else:
+        await bot.copy_message(
+            chat_id=owner_id,
+            from_chat_id=message.chat.id,
+            message_id=message.message_id,
+            caption=IF_CONTENT.format(reference_id, info.first_name),
+            parse_mode="html"
+        )
 
 
 @bot.on_message(filters.user(owner_id) & filters.text)
@@ -468,11 +503,22 @@ async def replay_media(bot, message):
             reference_id = file.caption.split()[2]
         except Exception:
             pass
-        await bot.copy_message(
-            chat_id=int(reference_id),
-            from_chat_id=message.chat.id,
-            message_id=message.message_id,
-            parse_mode="html"
-        )
+        # check if media is group of media
+        if message.media_group_id is not None:
+            await bot.copy_message(
+                chat_id=int(reference_id),
+                from_chat_id=message.chat.id,
+                message_id=message.message_id,
+                caption=message.caption,
+                parse_mode="html"
+            )
+        else:
+            await bot.copy_message(
+                chat_id=int(reference_id),
+                from_chat_id=message.chat.id,
+                message_id=message.message_id,
+                parse_mode="html"
+            )
 
-bot.run()
+if __name__ == "__main__":
+    bot.run()
